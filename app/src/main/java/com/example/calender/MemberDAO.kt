@@ -10,7 +10,7 @@ import androidx.room.Query
 
 @Dao
 interface MemberDAO {
-    @Insert(onConflict = REPLACE) //겹칠경우 덮어 씌운다
+    @Insert //겹칠경우 덮어 씌운다
     fun insert(Member: MemberEntity)
 
     @Query("Select * From Member")
