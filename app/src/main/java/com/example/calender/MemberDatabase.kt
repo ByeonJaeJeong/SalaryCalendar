@@ -27,5 +27,8 @@ abstract class MemberDatabase : RoomDatabase() {
             }
             return INSTANCE
         }
+        fun destoryInstance(){
+            INSTANCE = null
+        }
     }
 }
