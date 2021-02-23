@@ -28,13 +28,16 @@ class LoginFragment : Fragment(), View.OnClickListener {
         navController= Navigation.findNavController(view)
 
         member_btn.setOnClickListener(this)
-         
+        login_btn.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
       when(v?.id){
           R.id.member_btn ->{
               navController.navigate(R.id.action_loginFragment_to_memberFragment)
+          }
+          R.id.login_btn->{
+              navController.navigate(R.id.action_loginFragment_to_mainFragment)
           }
       }
     }
