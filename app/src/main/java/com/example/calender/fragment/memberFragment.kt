@@ -1,7 +1,5 @@
 package com.example.calender.fragment
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.calender.MainActivity
 import com.example.calender.MemberDatabase
 import com.example.calender.MemberEntity
 import com.example.calender.R

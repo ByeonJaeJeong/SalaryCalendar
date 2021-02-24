@@ -1,4 +1,4 @@
-package com.example.calender
+package com.example.calender.adapter
 
 import android.content.Context
 import android.graphics.Color
@@ -8,11 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import com.example.calender.R
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
 
-class CalendarAdapter(context: Context, days: ArrayList<Date>, eventDays: HashSet<Date>, inputMonth: Int) :
+class CalendarAdapter(context: Context, days: ArrayList<Date>, eventDays:HashSet<Date>, inputMonth: Int) :
     ArrayAdapter<Date>(context, R.layout.fragment_main, days) {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private val inputMonth = inputMonth - 1

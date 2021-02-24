@@ -1,15 +1,13 @@
-package com.example.calender
+package com.example.calender.activity
 
-import android.annotation.SuppressLint
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.calender.MemberDatabase
+import com.example.calender.MemberEntity
+import com.example.calender.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_member.*
 
 class MainActivity : AppCompatActivity()  {
     //사용자와 의 상호작용을 할수있게 준비하는 작업

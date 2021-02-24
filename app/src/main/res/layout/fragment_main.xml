@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.MainFragment">
 
     <LinearLayout
@@ -102,6 +103,9 @@
         <!--달력뷰-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/calendar"
+            app:spanCount="7"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_day"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
