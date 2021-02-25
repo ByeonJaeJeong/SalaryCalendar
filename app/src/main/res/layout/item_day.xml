@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="DayItemBinding">
+        <variable
+            name="calendarInfo"
+            type="com.example.calender.util.CalendarInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Calendar_Background"
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/calendar_item"
         tools:ignore="MissingConstraints">
 
         <TextView
+            android:id="@+id/textViewDateNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:textSize="14dp"
-            android:text="1"
-            android:layout_margin="5dp">
+            app:setDate="@{calendarInfo}"
+            tools:text="1"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            >
 
         </TextView>
     </LinearLayout>
 
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

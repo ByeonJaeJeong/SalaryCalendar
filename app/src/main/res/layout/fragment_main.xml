@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragment.MainFragment">
+    <data class="FragmentMainBinding">
+        <variable
+            name="calendarInfo"
+            type="com.example.calender.util.CalendarInfo" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,11 +31,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="@{(v)->model.startPicker(v)}"
+                android:text=""
                 android:padding="16dp"
-                android:text="@{model.mTitle}"
                 android:textSize="18sp" />
-
         </LinearLayout>
         <!--요일-->
         <LinearLayout
@@ -100,14 +105,15 @@
                 android:text="토"
                 android:textSize="9sp" />
         </LinearLayout>
-        <!--달력뷰-->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/calendar"
-            app:spanCount="7"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/item_day"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="7"
+            tools:listitem="@layout/item_day" />
     </LinearLayout>
 
-</FrameLayout>
+    </FrameLayout>
+</layout>
