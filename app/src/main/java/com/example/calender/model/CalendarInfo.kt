@@ -1,4 +1,4 @@
-package com.example.calender.util
+package com.example.calender.model
 
 data class CalendarInfo(
     var month : Int= 0,

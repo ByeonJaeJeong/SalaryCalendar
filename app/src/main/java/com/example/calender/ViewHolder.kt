@@ -1,18 +1,22 @@
 package com.example.calender
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.calender.databinding.DayItemBinding
-import com.example.calender.util.CalendarInfo
+import com.example.calender.model.CalendarInfo
 
-class ViewHolder private constructor(val binding:DayItemBinding) : RecyclerView.ViewHolder(binding.root){
-        val background =binding.CalendarBackground
-        val dateNumber =binding.textViewDateNumber
+class ViewHolder private constructor(
+        private val binding:DayItemBinding) : RecyclerView.ViewHolder(binding.root){
+        //val background =binding.CalendarBackground
+        val dateNumber : TextView =binding.textViewDateNumber
 
-        fun bind(item:CalendarInfo){
+        fun bind(item: CalendarInfo){
                 binding.calendarInfo=item
                 binding.executePendingBindings()
+                Log.v("viewHolder","viewholder"+item)
         }
 
         companion object{
@@ -20,12 +24,7 @@ class ViewHolder private constructor(val binding:DayItemBinding) : RecyclerView.
                         val layoutInflater=
                                 LayoutInflater.from(parent.context)
                         val binding=DayItemBinding.inflate(layoutInflater,parent,false)
-
                         return ViewHolder(binding)
                 }
         }
-
-
-
-
 }

@@ -6,35 +6,29 @@
     <data class="DayItemBinding">
         <variable
             name="calendarInfo"
-            type="com.example.calender.util.CalendarInfo" />
+            type="com.example.calender.model.CalendarInfo" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Calendar_Background"
-        android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/Calendar_Background"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
-        android:background="@drawable/calendar_item"
-        tools:ignore="MissingConstraints">
+        android:background="@drawable/calendar_item">
 
         <TextView
-            android:id="@+id/textViewDateNumber"
+            android:id="@+id/textView_DateNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:textSize="14dp"
             app:setDate="@{calendarInfo}"
-            tools:text="1"
+            tools:text="가가가"
             android:textColor="@color/black"
-            android:layout_margin="5dp"
-            >
+            android:layout_margin="5dp">
 
         </TextView>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
