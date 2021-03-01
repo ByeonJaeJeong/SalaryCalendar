@@ -15,8 +15,10 @@ import com.example.calender.R
 import androidx.databinding.DataBindingUtil
 import com.example.calender.adapter.CalendarAdapter
 import com.example.calender.databinding.FragmentMainBinding
+import com.example.calender.databinding.HeaderItemBinding
 import com.example.calender.model.CalendarInfo
-
+import kotlinx.android.synthetic.main.item_calendar_header.*
+import java.time.Year
 
 
 class MainFragment : Fragment() {
@@ -33,10 +35,21 @@ class MainFragment : Fragment() {
         val adapter =CalendarAdapter()
         binding.calendar.adapter =adapter
         val calendar = Calendar.getInstance()
-        calendar.timeInMillis= System.currentTimeMillis()
-        calendar.set(Calendar.DAY_OF_MONTH,1)
+        //현재 날짜 정보 입력
+        val startData= "20210105083000"
+
+        calendar.set(Calendar.YEAR,(startData.substring(0,4).toInt()))
+        calendar.set(Calendar.MONTH,(startData.substring(4,6)).toInt()-1)
+        calendar.set(Calendar.DATE,(startData.substring(6,8)).toInt())
+        calendar.set(Calendar.HOUR,(startData.substring(8,10)).toInt())
+        calendar.set(Calendar.MINUTE,(startData.substring(10,12)).toInt())
+        calendar.set(Calendar.SECOND,(startData.substring(12,14)).toInt())
+        //calendar.timeInMillis= System.currentTimeMillis()
+        //calendar.set(Calendar.DAY_OF_MONTH,1)
+        //달력에서 현재 시간 날짜 정보를 가져옴
         val tmpCal= calendar.timeInMillis
         calendar.timeInMillis=tmpCal
+
         val year=calendar.get(Calendar.YEAR).toString()
         val maxDate =calendar.getActualMaximum(Calendar.DATE)
         val week =calendar.get(Calendar.DAY_OF_WEEK) - 1
@@ -60,9 +73,10 @@ fun TextView.setDate(item: CalendarInfo?){
         text= it.dayOfMonth.toString()
     }
 }
-@BindingAdapter("setmonth")
+@BindingAdapter("setMonth")
 fun TextView.setMonth(item: CalendarInfo?){
     item?.let {
         text= it.month.toString()
     }
 }
+

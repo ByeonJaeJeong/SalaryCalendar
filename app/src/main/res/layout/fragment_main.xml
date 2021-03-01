@@ -26,14 +26,11 @@
             android:animateLayoutChanges="true"
             android:background="@color/BlanchedAlmond"
             android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
+            <include
+                android:id="@+id/header_title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="2021년 2월"
-                android:padding="16dp"
-                android:textSize="18sp" />
+                layout="@layout/item_calendar_header" />
         </LinearLayout>
         <!--요일-->
         <LinearLayout

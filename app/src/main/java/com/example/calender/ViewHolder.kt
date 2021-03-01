@@ -10,13 +10,12 @@ import com.example.calender.model.CalendarInfo
 
 class ViewHolder private constructor(
         private val binding:DayItemBinding) : RecyclerView.ViewHolder(binding.root){
-        //val background =binding.CalendarBackground
+        val dateHeader =binding.CalendarBackground
         val dateNumber : TextView =binding.textViewDateNumber
 
         fun bind(item: CalendarInfo){
                 binding.calendarInfo=item
                 binding.executePendingBindings()
-                Log.v("viewHolder","viewholder"+item)
         }
 
         companion object{
