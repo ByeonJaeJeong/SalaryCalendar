@@ -17,6 +17,7 @@ import com.example.calender.adapter.CalendarAdapter
 import com.example.calender.databinding.FragmentMainBinding
 import com.example.calender.databinding.HeaderItemBinding
 import com.example.calender.model.CalendarInfo
+import com.example.calender.model.WorkInfo
 import kotlinx.android.synthetic.main.item_calendar_header.*
 import java.time.Year
 
@@ -50,13 +51,14 @@ class MainFragment : Fragment() {
         val tmpCal= calendar.timeInMillis
         calendar.timeInMillis=tmpCal
 
-        val year=calendar.get(Calendar.YEAR).toString()
+        val year=calendar.get(Calendar.YEAR)
         val maxDate =calendar.getActualMaximum(Calendar.DATE)
         val week =calendar.get(Calendar.DAY_OF_WEEK) - 1
         val month = calendar.get(Calendar.MONTH) + 1
+        val workInfo = WorkInfo()
         val list = MutableList(week, init = { CalendarInfo() })
         for (i in 1..maxDate) {
-            list.add(CalendarInfo(month, i))
+            list.add(CalendarInfo(year,month, i,week,workInfo))
         }
         adapter.submitList(list)
         return binding.root

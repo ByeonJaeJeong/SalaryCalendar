@@ -1,5 +1,6 @@
 package com.example.calender
 
+import android.nfc.Tag
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,6 +13,10 @@ class ViewHolder private constructor(
         private val binding:DayItemBinding) : RecyclerView.ViewHolder(binding.root){
         val dateHeader =binding.CalendarBackground
         val dateNumber : TextView =binding.textViewDateNumber
+
+        init {
+            Log.v("Tag", "ViewHolder - init() called")
+        }
 
         fun bind(item: CalendarInfo){
                 binding.calendarInfo=item
