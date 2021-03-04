@@ -1,6 +1,7 @@
 package com.example.calender.adapter
 
 
+import android.graphics.Color
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,14 @@ class CalendarAdapter :
         if(item.dayOfMonth == 0){
             holder.dateNumber.visibility= View.GONE
     }
+        Log.v("data",item.dayOfWeek.toString())
+        if(item.dayOfWeek == 0){
+            holder.dateNumber.setTextColor(Color.parseColor("#B22222"))
+        }
+        if(item.dayOfWeek == 6){
+            holder.dateNumber.setTextColor(Color.BLUE)
+        }
+
     holder.bind(item)
 }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

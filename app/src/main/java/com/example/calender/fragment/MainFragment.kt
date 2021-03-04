@@ -10,20 +10,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.view.get
 import androidx.databinding.BindingAdapter
 import com.example.calender.R
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.calender.adapter.CalendarAdapter
 import com.example.calender.databinding.FragmentMainBinding
 import com.example.calender.databinding.HeaderItemBinding
 import com.example.calender.model.CalendarInfo
 import com.example.calender.model.WorkInfo
+import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.android.synthetic.main.item_calendar_header.*
 import java.time.Year
 
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), View.OnClickListener {
 
+    lateinit var navController: NavController
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
@@ -33,20 +39,13 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding :FragmentMainBinding =
             DataBindingUtil.inflate(inflater,R.layout.fragment_main,container,false)
+
         val adapter =CalendarAdapter()
         binding.calendar.adapter =adapter
         val calendar = Calendar.getInstance()
         //현재 날짜 정보 입력
-        val startData= "20210105083000"
-
-        calendar.set(Calendar.YEAR,(startData.substring(0,4).toInt()))
-        calendar.set(Calendar.MONTH,(startData.substring(4,6)).toInt()-1)
-        calendar.set(Calendar.DATE,(startData.substring(6,8)).toInt())
-        calendar.set(Calendar.HOUR,(startData.substring(8,10)).toInt())
-        calendar.set(Calendar.MINUTE,(startData.substring(10,12)).toInt())
-        calendar.set(Calendar.SECOND,(startData.substring(12,14)).toInt())
-        //calendar.timeInMillis= System.currentTimeMillis()
-        //calendar.set(Calendar.DAY_OF_MONTH,1)
+        calendar.timeInMillis= System.currentTimeMillis()
+        calendar.set(Calendar.DAY_OF_MONTH,1)
         //달력에서 현재 시간 날짜 정보를 가져옴
         val tmpCal= calendar.timeInMillis
         calendar.timeInMillis=tmpCal
@@ -56,16 +55,36 @@ class MainFragment : Fragment() {
         val week =calendar.get(Calendar.DAY_OF_WEEK) - 1
         val month = calendar.get(Calendar.MONTH) + 1
         val workInfo = WorkInfo()
-        val list = MutableList(week, init = { CalendarInfo() })
+        binding.selectDate.setText(year.toString()+"년"+month.toString()+"월")
+        Log.v("첫날",week.toString())
+        val list = MutableList(week, init = { CalendarInfo(year,month,0) })
         for (i in 1..maxDate) {
-            list.add(CalendarInfo(year,month, i,week,workInfo))
+            val week_day = (week+i-1)%7
+            list.add(CalendarInfo(year,month,i,week_day))
         }
+
+
         adapter.submitList(list)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        navController= Navigation.findNavController(view)
+        lMonthBtn.setOnClickListener(this)
+
+
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.lMonthBtn->{
+                val text=R.id.select_date.toString()
+
+                Log.v("출력",text.toString())
+            }
+        }
     }
 
 }
@@ -75,10 +94,5 @@ fun TextView.setDate(item: CalendarInfo?){
         text= it.dayOfMonth.toString()
     }
 }
-@BindingAdapter("setMonth")
-fun TextView.setMonth(item: CalendarInfo?){
-    item?.let {
-        text= it.month.toString()
-    }
-}
+
 

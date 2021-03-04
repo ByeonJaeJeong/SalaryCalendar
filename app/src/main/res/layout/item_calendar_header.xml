@@ -14,7 +14,7 @@
     android:gravity="center"
     android:orientation="horizontal">
     <Button
-        android:id="@+id/leftButton"
+        android:id="@+id/lMonthBtn"
         android:text="\u003c"
         android:background="#00ff0000"
         android:gravity="center"
@@ -26,12 +26,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24dp"
-        app:setMonth="@{model}"
         android:padding="5dp"
         android:layout_gravity="center"
         android:layout_margin="15dp" />
         <Button
-            android:id="@+id/rightButton"
+            android:id="@+id/rMonthBtn"
             android:text="\u003e"
             android:textSize="24dp"
             android:background="#00ff0000"
