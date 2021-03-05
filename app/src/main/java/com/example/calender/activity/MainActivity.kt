@@ -2,6 +2,7 @@ package com.example.calender.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.calender.MemberDatabase
@@ -25,6 +26,15 @@ class MainActivity : AppCompatActivity()  {
         //페이지 변환
         navController = nav_host_fragment.findNavController()
 
+
+
+    }
+
+    fun setDataFragemnt(fragment: Fragment, title: String){
+        val bundle= Bundle()
+        bundle.putString("title",title)
+
+        fragment.arguments=bundle
 
     }
 

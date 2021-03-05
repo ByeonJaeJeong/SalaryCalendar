@@ -1,4 +1,4 @@
-package com.example.calender
+package com.example.calender.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.calender.model.CalendarInfo

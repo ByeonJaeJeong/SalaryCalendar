@@ -25,7 +25,7 @@
             android:layout_gravity="right"
             android:textSize="14dp"
             app:setDate="@{calendarInfo}"
-            tools:text="가가가"
+            tools:text="일자출력"
 
             android:textColor="@color/black"
             android:layout_margin="5dp">

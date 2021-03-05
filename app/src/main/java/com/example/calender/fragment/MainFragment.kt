@@ -14,6 +14,8 @@ import androidx.core.view.get
 import androidx.databinding.BindingAdapter
 import com.example.calender.R
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.calender.adapter.CalendarAdapter
@@ -30,19 +32,20 @@ import java.time.Year
 class MainFragment : Fragment(), View.OnClickListener {
 
     lateinit var navController: NavController
-
+    lateinit var calendar: Calendar
+    lateinit var binding: FragmentMainBinding
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding :FragmentMainBinding =
+       binding=
             DataBindingUtil.inflate(inflater,R.layout.fragment_main,container,false)
 
         val adapter =CalendarAdapter()
         binding.calendar.adapter =adapter
-        val calendar = Calendar.getInstance()
+        calendar = Calendar.getInstance()
         //현재 날짜 정보 입력
         calendar.timeInMillis= System.currentTimeMillis()
         calendar.set(Calendar.DAY_OF_MONTH,1)
@@ -59,12 +62,14 @@ class MainFragment : Fragment(), View.OnClickListener {
         Log.v("첫날",week.toString())
         val list = MutableList(week, init = { CalendarInfo(year,month,0) })
         for (i in 1..maxDate) {
-            val week_day = (week+i-1)%7
+            val week_day = (week+i-1) % 7
             list.add(CalendarInfo(year,month,i,week_day))
         }
 
 
         adapter.submitList(list)
+
+
         return binding.root
     }
 
@@ -72,19 +77,35 @@ class MainFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         navController= Navigation.findNavController(view)
-        lMonthBtn.setOnClickListener(this)
-
+        leftButton.setOnClickListener(this)
+        rightButton.setOnClickListener(this)
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.lMonthBtn->{
-                val text=R.id.select_date.toString()
+            R.id.leftButton->{
+                calendar.add(Calendar.MONTH,-1)
+                val year=calendar.get(Calendar.YEAR)
+                val month=calendar.get(Calendar.MONTH)+1
+                Log.v("leftbutton",year.toString()+"년"+month.toString()+"월")
+                //refreshFragment(this,parentFragmentManager)
 
-                Log.v("출력",text.toString())
+
+            }
+            R.id.rightButton->{
+                calendar.add(Calendar.MONTH,+1)
+                val year=calendar.get(Calendar.YEAR)
+                val month=calendar.get(Calendar.MONTH)+1
+                Log.v("rightbutton",year.toString()+"년"+month.toString()+"월")
+                //refreshFragment(this,parentFragmentManager)
             }
         }
+    }
+    fun refreshFragment(fragment: Fragment, fragmentManager: FragmentManager) {
+        var ft: FragmentTransaction = fragmentManager.beginTransaction()
+        ft.detach(fragment).attach(fragment).commit()
     }
 
 }
