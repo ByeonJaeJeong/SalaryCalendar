@@ -26,6 +26,7 @@ import com.example.calender.model.WorkInfo
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.android.synthetic.main.item_calendar_header.*
+import java.time.Month
 import java.time.Year
 
 
@@ -34,7 +35,6 @@ class MainFragment : Fragment(), View.OnClickListener {
     lateinit var navController: NavController
     lateinit var calendar: Calendar
     lateinit var binding: FragmentMainBinding
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,36 +42,20 @@ class MainFragment : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
        binding=
             DataBindingUtil.inflate(inflater,R.layout.fragment_main,container,false)
-
-        val adapter =CalendarAdapter()
-        binding.calendar.adapter =adapter
         calendar = Calendar.getInstance()
         //현재 날짜 정보 입력
         calendar.timeInMillis= System.currentTimeMillis()
         calendar.set(Calendar.DAY_OF_MONTH,1)
-        //달력에서 현재 시간 날짜 정보를 가져옴
-        val tmpCal= calendar.timeInMillis
-        calendar.timeInMillis=tmpCal
-
         val year=calendar.get(Calendar.YEAR)
-        val maxDate =calendar.getActualMaximum(Calendar.DATE)
-        val week =calendar.get(Calendar.DAY_OF_WEEK) - 1
-        val month = calendar.get(Calendar.MONTH) + 1
-        val workInfo = WorkInfo()
-        binding.selectDate.setText(year.toString()+"년"+month.toString()+"월")
-        Log.v("첫날",week.toString())
-        val list = MutableList(week, init = { CalendarInfo(year,month,0) })
-        for (i in 1..maxDate) {
-            val week_day = (week+i-1) % 7
-            list.add(CalendarInfo(year,month,i,week_day))
-        }
+        val month=calendar.get(Calendar.MONTH)
+        makeMonthDate(year,month)
 
-
-        adapter.submitList(list)
 
 
         return binding.root
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -82,27 +66,50 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.leftButton->{
                 calendar.add(Calendar.MONTH,-1)
                 val year=calendar.get(Calendar.YEAR)
-                val month=calendar.get(Calendar.MONTH)+1
+                val month=calendar.get(Calendar.MONTH)
                 Log.v("leftbutton",year.toString()+"년"+month.toString()+"월")
-                //refreshFragment(this,parentFragmentManager)
+               makeMonthDate(year,month)
 
 
             }
             R.id.rightButton->{
                 calendar.add(Calendar.MONTH,+1)
                 val year=calendar.get(Calendar.YEAR)
-                val month=calendar.get(Calendar.MONTH)+1
+                val month=calendar.get(Calendar.MONTH)
                 Log.v("rightbutton",year.toString()+"년"+month.toString()+"월")
+                makeMonthDate(year,month)
                 //refreshFragment(this,parentFragmentManager)
             }
         }
     }
+    fun makeMonthDate(year: Int,month: Int){
+        val adapter =CalendarAdapter()
+        binding.calendar.adapter =adapter
+        calendar = Calendar.getInstance()
+        //현재 날짜 정보 입력
+        calendar.set(Calendar.YEAR,year)
+        calendar.set(Calendar.MONTH,month)
+        val year=calendar.get(Calendar.YEAR)
+        val maxDate =calendar.getActualMaximum(Calendar.DATE)
+        val week =calendar.get(Calendar.DAY_OF_WEEK) - 1
+        val month = calendar.get(Calendar.MONTH) + 1
+        binding.selectDate.setText(year.toString()+"년"+month.toString()+"월")
+        Log.v("첫날",week.toString())
+        val list = MutableList(week, init = { CalendarInfo(year,month,0) })
+        for (i in 1..maxDate) {
+            val week_day = (week+i-1) % 7
+            list.add(CalendarInfo(year,month,i,week_day))
+        }
+
+
+        adapter.submitList(list)
+    }
+
     fun refreshFragment(fragment: Fragment, fragmentManager: FragmentManager) {
         var ft: FragmentTransaction = fragmentManager.beginTransaction()
         ft.detach(fragment).attach(fragment).commit()
