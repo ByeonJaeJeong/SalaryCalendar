@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity()  {
 
 
         //DB생성
-       // db = MemberDatabase.getInstance(this)!!
+        db = MemberDatabase.getInstance(this)!!
 
         //페이지 변환
         navController = nav_host_fragment.findNavController()

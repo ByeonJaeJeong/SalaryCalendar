@@ -2,6 +2,7 @@ package com.example.calender
 
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -20,9 +21,9 @@ abstract class MemberDatabase : RoomDatabase() {
                 synchronized(MemberDatabase::class){
                     INSTANCE= Room.databaseBuilder(context.applicationContext,
                     MemberDatabase::class.java,"member.db")
-                        .fallbackToDestructiveMigration()
-                        //DB를 한번 생성하고나서 중간에 테이블의 수정이 있다면 version 을 올린다면 모두 지우고 새로 생성
+                        .fallbackToDestructiveMigration()//DB를 한번 생성하고나서 중간에 테이블의 수정이 있다면 version 을 올린다면 모두 지우고 새로 생성
                         .build()
+                    Log.v("DB생성","생성성공")
                 }
             }
             return INSTANCE

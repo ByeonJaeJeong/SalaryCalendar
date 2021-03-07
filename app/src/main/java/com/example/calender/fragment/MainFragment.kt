@@ -83,7 +83,7 @@ class MainFragment : Fragment(), View.OnClickListener {
                 val month=calendar.get(Calendar.MONTH)
                 Log.v("rightbutton",year.toString()+"년"+month.toString()+"월")
                 makeMonthDate(year,month)
-                //refreshFragment(this,parentFragmentManager)
+
             }
         }
     }
@@ -109,7 +109,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
         adapter.submitList(list)
     }
-
+    //새로고침 하는 메소드
     fun refreshFragment(fragment: Fragment, fragmentManager: FragmentManager) {
         var ft: FragmentTransaction = fragmentManager.beginTransaction()
         ft.detach(fragment).attach(fragment).commit()
