@@ -34,6 +34,21 @@ class CalendarAdapter :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
+    //데이터를 저장할 아이템리스트
+   // val items = ArrayList<>()
 
+
+    //클릭 인터페이스 정의
+    interface ItemClickListener {
+        fun onClick(view: View, position: Int)
+    }
+
+    //클릭리스너 선언
+    private lateinit var itemClickListner: ItemClickListener
+
+    //클릭리스너 등록 매소드
+    fun setItemClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListner = itemClickListener
+    }
 }
 
