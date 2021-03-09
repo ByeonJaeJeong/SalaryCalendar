@@ -63,6 +63,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
+            //월 변경버튼(좌)
             R.id.leftButton->{
                 calendar.add(Calendar.MONTH,-1)
                 val year=calendar.get(Calendar.YEAR)
@@ -72,6 +73,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
 
             }
+            //월 변경 버튼(우)
             R.id.rightButton->{
                 calendar.add(Calendar.MONTH,+1)
                 val year=calendar.get(Calendar.YEAR)
@@ -79,6 +81,7 @@ class MainFragment : Fragment(), View.OnClickListener {
                 Log.v("rightbutton",year.toString()+"년"+month.toString()+"월")
                 makeMonthDate(year,month)
             }
+            //연월 설정 button
             R.id.select_date->{
                 val dialog = AlertDialog.Builder(context).create()
                 val edialog : LayoutInflater = LayoutInflater.from(context)
