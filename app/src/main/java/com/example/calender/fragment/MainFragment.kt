@@ -139,7 +139,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
         }
     }
-    fun makeMonthDate(year: Int,month: Int){
+    private fun makeMonthDate(year: Int,month: Int){
         val adapter =CalendarAdapter()
         binding.calendar.adapter =adapter
         calendar = Calendar.getInstance()
