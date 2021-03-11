@@ -7,10 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.NumberPicker
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.calender.databinding.DayItemBinding
 import com.example.calender.model.CalendarInfo
@@ -28,18 +25,30 @@ class ViewHolder private constructor(
                 binding.executePendingBindings()
                 binding.CalendarBackground.setOnClickListener{
                         Log.v("itemselected",item.toString()) //item 은 CalendarInfo 정보
-                        val dialog = AlertDialog.Builder(it.context,android.R.style.Theme_Material_Light_NoActionBar_Fullscreen).create()
+                        val dialog = AlertDialog.Builder(it.context,android.R.style.Theme_Material_Light_NoActionBar).create()
                         val edialog : LayoutInflater = LayoutInflater.from(it.context)
                         val mView : View = edialog.inflate(R.layout.day_dialog,null)
 
 
-                        val cancel : Button = mView.findViewById(R.id.workRegistration_backBtn)
+                        val cancel : ImageButton = mView.findViewById(R.id.workRegistration_backBtn)
                         val save : Button = mView.findViewById(R.id.workRegistration_resultBtn)
                         val workdate :TextView = mView.findViewById(R.id.workDate_text)
 
+                        val workDateBtn: LinearLayout = mView.findViewById(R.id.workDate_btn)
+                        val workplaceBtn : LinearLayout = mView.findViewById(R.id.workplace_btn)
+                        val workTypeBtn : LinearLayout = mView.findViewById(R.id.workType_btn)
 
                         workdate.text=item.year.toString()+"."+item.month.toString()+"."+item.dayOfMonth.toString()
 
+                        workDateBtn.setOnClickListener{
+                                Log.v("ViewHolder","workDateBtn Click")
+                        }
+                        workplaceBtn.setOnClickListener {
+                                Log.v("ViewHolder","workplaceBtn Click")
+                        }
+                        workTypeBtn.setOnClickListener {
+                                Log.v("ViewHolder","workTypeBtn Click")
+                        }
 
 
                         cancel.setOnClickListener {
