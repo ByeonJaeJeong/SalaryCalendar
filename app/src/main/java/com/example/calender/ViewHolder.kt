@@ -1,13 +1,13 @@
 package com.example.calender
 
 import android.app.AlertDialog
-import android.icu.util.Calendar
-import android.nfc.Tag
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.calender.databinding.DayItemBinding
 import com.example.calender.model.CalendarInfo
@@ -15,7 +15,7 @@ import com.example.calender.model.CalendarInfo
 class ViewHolder private constructor(
         private val binding:DayItemBinding) : RecyclerView.ViewHolder(binding.root){
         val dateNumber : TextView =binding.textViewDateNumber
-
+        lateinit var navController: NavController
         init {
             Log.v("Tag", "ViewHolder - init() called")
         }
@@ -23,10 +23,12 @@ class ViewHolder private constructor(
         fun bind(item: CalendarInfo){
                 binding.calendarInfo=item
                 binding.executePendingBindings()
-                binding.CalendarBackground.setOnClickListener{
+                binding.CalendarBackground.setOnClickListener{ views ->
+                        navController= Navigation.findNavController(views)
+
                         Log.v("itemselected",item.toString()) //item 은 CalendarInfo 정보
-                        val dialog = AlertDialog.Builder(it.context,android.R.style.Theme_Material_Light_NoActionBar).create()
-                        val edialog : LayoutInflater = LayoutInflater.from(it.context)
+                        val dialog = AlertDialog.Builder(views.context,android.R.style.Theme_Material_Light_NoActionBar).create()
+                        val edialog : LayoutInflater = LayoutInflater.from(views.context)
                         val mView : View = edialog.inflate(R.layout.day_dialog,null)
 
 
