@@ -38,6 +38,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
           }
           R.id.login_btn->{
               navController.navigate(R.id.action_loginFragment_to_mainFragment)
+
           }
       }
     }

@@ -1,6 +1,7 @@
 package com.example.calender.fragment
 
 import android.app.AlertDialog
+import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +21,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.calender.BottomDialogFragment
+import com.example.calender.activity.MainActivity
 import com.example.calender.adapter.CalendarAdapter
 import com.example.calender.databinding.FragmentMainBinding
 import com.example.calender.model.CalendarInfo
@@ -27,7 +29,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 
 class MainFragment : Fragment(), View.OnClickListener {
-
+    lateinit var adapter : CalendarAdapter
     lateinit var navController: NavController
     lateinit var calendar: Calendar
     lateinit var binding: FragmentMainBinding
@@ -38,14 +40,6 @@ class MainFragment : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
        binding=
             DataBindingUtil.inflate(inflater,R.layout.fragment_main,container,false)
-        calendar = Calendar.getInstance()
-        //현재 날짜 정보 입력
-        calendar.timeInMillis= System.currentTimeMillis()
-        calendar.set(Calendar.DAY_OF_MONTH,1)
-        val year=calendar.get(Calendar.YEAR)
-        val month=calendar.get(Calendar.MONTH)
-        makeMonthDate(year,month)
-
 
 
         return binding.root
@@ -55,12 +49,20 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        adapter=CalendarAdapter(view)
         navController= Navigation.findNavController(view)
         leftButton.setOnClickListener(this)
         rightButton.setOnClickListener(this)
         select_date.setOnClickListener(this)
 
+        calendar = Calendar.getInstance()
+        //현재 날짜 정보 입력
+        calendar.timeInMillis= System.currentTimeMillis()
+        calendar.set(Calendar.DAY_OF_MONTH,1)
+        val year=calendar.get(Calendar.YEAR)
+        val month=calendar.get(Calendar.MONTH)
+
+        makeMonthDate(year,month)
     }
 
     override fun onClick(v: View?) {
@@ -149,7 +151,6 @@ class MainFragment : Fragment(), View.OnClickListener {
         }
     }
     private fun makeMonthDate(year: Int,month: Int){
-        val adapter =CalendarAdapter()
         binding.calendar.adapter =adapter
         calendar = Calendar.getInstance()
         //현재 날짜 정보 입력
@@ -166,7 +167,6 @@ class MainFragment : Fragment(), View.OnClickListener {
             val week_day = (week+i-1) % 7
             list.add(CalendarInfo(year,month,i,week_day))
         }
-
 
         adapter.submitList(list)
     }
