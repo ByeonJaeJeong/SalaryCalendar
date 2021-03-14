@@ -39,5 +39,19 @@
         android:id="@+id/dayFragment"
         android:name="com.example.calender.fragment.DayFragment"
         android:label="fragment_day"
-        tools:layout="@layout/fragment_day" />
+        tools:layout="@layout/fragment_day" >
+        <argument
+            android:name="year"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="month"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="day"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
 </navigation>

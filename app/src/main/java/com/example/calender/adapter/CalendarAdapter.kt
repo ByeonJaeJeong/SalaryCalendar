@@ -3,16 +3,20 @@ package com.example.calender.adapter
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ListAdapter
 import com.example.calender.BottomDialogFragment
 import com.example.calender.R
 import com.example.calender.ViewHolder
+import com.example.calender.fragment.MainFragmentDirections
 import com.example.calender.model.CalendarInfo
 
 
@@ -40,7 +44,9 @@ class CalendarAdapter(val context: View) :
         if(item.dayOfMonth != 0){
             holder.itemView.setOnClickListener {
                 Log.v("adapter Click Method", "item.dayOfMonth-0이아닐때")
-                navController.navigate(R.id.action_mainFragment_to_dayFragment)
+
+                navController.navigate(R.id.action_mainFragment_to_dayFragment, bundleOf("year" to item.year,"month" to  item.month,"day" to item.dayOfMonth))
+
             }
         }
 
