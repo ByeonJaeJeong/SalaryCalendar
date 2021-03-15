@@ -135,13 +135,7 @@ class MainFragment : Fragment(), View.OnClickListener {
                     makeMonthDate(year.value ,month.value-1)
                     dialog.dismiss()
                     dialog.cancel()
-                    val orderBottomDialogFragment: BottomDialogFragment = BottomDialogFragment {
-                        when (it) {
-                            0 -> Toast.makeText(this.context,"item1", Toast.LENGTH_SHORT)
-                            1 ->Log.v("ViewHolder","item2")
-                        }
-                    }
-                    orderBottomDialogFragment.show(parentFragmentManager,orderBottomDialogFragment.tag)
+
                 }
                 dialog.setView(mView)
                 dialog.create()

@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.calender.MemberDatabase
-import com.example.calender.MemberEntity
 import com.example.calender.R
 import kotlinx.android.synthetic.main.fragment_member.*
 

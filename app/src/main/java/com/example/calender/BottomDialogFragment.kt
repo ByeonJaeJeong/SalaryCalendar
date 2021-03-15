@@ -31,5 +31,13 @@ BottomSheetDialogFragment(){
             itemClick(2)
             dialog?.dismiss()
         }
+        view.holiday_pay.setOnClickListener {
+            itemClick(3)
+            dialog?.dismiss()
+        }
+        view.absnc.setOnClickListener {
+            itemClick(4)
+            dialog?.dismiss()
+        }
     }
 }
