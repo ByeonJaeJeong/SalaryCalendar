@@ -14,9 +14,6 @@ import kotlinx.android.synthetic.main.fragment_member.*
 
 class memberFragment : Fragment() , View.OnClickListener{
     lateinit var navController: NavController
-    lateinit var db : MemberDatabase
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,11 +33,7 @@ class memberFragment : Fragment() , View.OnClickListener{
         when(v?.id){
         R.id.memberJoin_btn->{
             if (memberPW_edit.text.toString() == memberPW_edit2.text.toString()) {
-                var member = MemberEntity(
-                    memberEmail_edit.text.toString(),
-                    memberPW_edit.text.toString(),
-                    memberName_edit.text.toString()
-                )
+
                 Toast.makeText(v.context, "회원가입 완료", Toast.LENGTH_SHORT).show()
 
             } else {
