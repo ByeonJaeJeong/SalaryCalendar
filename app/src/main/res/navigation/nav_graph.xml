@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/memberFragment"
-        android:name="com.example.calender.fragment.memberFragment"
+        android:name="com.example.calender.fragment.MemberFragment"
         android:label="fragment_member"
         tools:layout="@layout/fragment_member" />
     <fragment

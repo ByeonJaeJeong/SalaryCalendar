@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.example.calender.R
 import kotlinx.android.synthetic.main.worktype_dialog.view.*
 
 class BottomDialogFragment(val itemClick: (Int) -> Unit):

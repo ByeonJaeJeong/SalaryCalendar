@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.NumberPicker
 import android.widget.TextView
-import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import com.example.calender.R
 import androidx.databinding.DataBindingUtil
@@ -20,8 +19,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.calender.BottomDialogFragment
-import com.example.calender.activity.MainActivity
 import com.example.calender.adapter.CalendarAdapter
 import com.example.calender.databinding.FragmentMainBinding
 import com.example.calender.model.CalendarInfo

@@ -12,7 +12,7 @@ import com.example.calender.R
 import kotlinx.android.synthetic.main.fragment_member.*
 
 
-class memberFragment : Fragment() , View.OnClickListener{
+class MemberFragment : Fragment() , View.OnClickListener{
     lateinit var navController: NavController
 
     override fun onCreateView(
@@ -24,7 +24,7 @@ class memberFragment : Fragment() , View.OnClickListener{
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController= Navigation.findNavController(view)
+//        navController= Navigation.findNavController(view)
         memberJoin_btn.setOnClickListener(this)
 
     }//view oncreated
