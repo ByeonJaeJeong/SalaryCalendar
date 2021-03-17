@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity()  {
         setContentView(R.layout.activity_main)
 
         //페이지 변환
-        navController = nav_host_fragment.findNavController()
+       // navController = nav_host_fragment.findNavController()
 
         configureBottomNavigation()
     }
