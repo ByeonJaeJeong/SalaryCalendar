@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.calender.adapter.CalendarAdapter
+import com.example.calender.adapter.NavigationViewpagerAdapter
 import com.example.calender.databinding.FragmentMainBinding
 import com.example.calender.model.CalendarInfo
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -30,6 +31,7 @@ class MainFragment : Fragment(), View.OnClickListener {
     lateinit var navController: NavController
     lateinit var calendar: Calendar
     lateinit var binding: FragmentMainBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,8 +39,6 @@ class MainFragment : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
        binding=
             DataBindingUtil.inflate(inflater,R.layout.fragment_main,container,false)
-
-
         return binding.root
     }
 
@@ -47,7 +47,7 @@ class MainFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter=CalendarAdapter(view)
-        navController= Navigation.findNavController(view)
+//        navController= Navigation.findNavController(view)
         leftButton.setOnClickListener(this)
         rightButton.setOnClickListener(this)
         select_date.setOnClickListener(this)

@@ -3,9 +3,10 @@
 
     <item
         android:drawable="@drawable/calendar_icon_noselect"
-        android:state_selected="false"/>
+        android:state_checked="false"
+        />
     <item
         android:drawable="@drawable/calendar_icon_selected"
-        android:state_selected="true"/>
+        android:state_checked="true"/>
 
 </selector>

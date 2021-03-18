@@ -64,7 +64,11 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
     //recycleview
     implementation "androidx.recyclerview:recyclerview:1.1.0"
-    //safe Args
+    implementation 'com.android.support:design:30.0.0'
+    //TabLayout 인터페이스 리팩터링
+    implementation "com.google.android.material:material:1.1.0-beta01"
+    //viewpager2
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
 
 }

@@ -27,7 +27,7 @@ class CalendarAdapter(val context: View) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item =getItem(position)
-        navController=Navigation.findNavController(context)
+//        navController=Navigation.findNavController(context)
 
         // 0일경우 날짜표시 x
         if(item.dayOfMonth == 0){

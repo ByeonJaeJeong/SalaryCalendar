@@ -3,7 +3,7 @@
 
     <item
         android:drawable="@drawable/more_icon_noselect"
-        android:state_selected="false"/>
+        android:state_selected="false" />
     <item
         android:drawable="@drawable/more_icon_selected"
         android:state_selected="true"/>
