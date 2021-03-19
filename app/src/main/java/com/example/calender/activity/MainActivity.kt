@@ -4,12 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.calender.R
 import com.example.calender.adapter.NavigationViewpagerAdapter
-import com.example.calender.fragment.LoginFragment
 import com.example.calender.fragment.MainFragment
+import com.example.calender.fragment.MoreFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity()  {
@@ -17,8 +16,7 @@ class MainActivity : AppCompatActivity()  {
     //lateinit var  navController: NavController //나중에 정의하겠다
     private val fragmentCalendar by lazy { MainFragment() }
     private val fragmentPay by lazy { MainFragment() }
-    private val fragmentMore by lazy { LoginFragment() }
-
+    private val fragmentMore by lazy { MoreFragment() }
     private val fragments: List<Fragment> = listOf( fragmentCalendar, fragmentPay, fragmentMore )
     private val pagerAdapter: NavigationViewpagerAdapter by lazy { NavigationViewpagerAdapter(this, fragments) }
 
@@ -42,15 +40,14 @@ class MainActivity : AppCompatActivity()  {
                     R.id.calendar_icon -> 0
                     R.id.piggy_icon -> 1
                     R.id.more_icon -> 2
-                    else -> Log.v("initNavigation error ",it.itemId.toString())
+                    else -> error("initViewPager error"+it.itemId.toString())
                 }
-                if(page != view_pager.currentItem){
-                    Log.v("page data",page.toString() +","+view_pager.currentItem.toString())
+                if(page != view_pager.currentItem){ Log.v("page data",page.toString() +","+view_pager.currentItem.toString())
                     view_pager.currentItem=page
                 }
                 true
             }
-            selectedItemId = R.id.calendar_nav_btn
+            selectedItemId = R.id.calendar_icon
         }
     }
 
@@ -66,7 +63,6 @@ class MainActivity : AppCompatActivity()  {
                         else -> error("initViewPager error"+position.toString())
                     }
                     if (bottom_navigation.selectedItemId != navigation) {
-                        Log.v("initViewPager",position.toString()+","+bottom_navigation.selectedItemId)
                         bottom_navigation.selectedItemId = navigation
                     }
                 }

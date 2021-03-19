@@ -32,6 +32,7 @@ class MainFragment : Fragment(), View.OnClickListener {
     lateinit var calendar: Calendar
     lateinit var binding: FragmentMainBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
