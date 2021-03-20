@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.calender.fragment.`LoginFragment.kt`"
+        android:name="com.example.calender.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/memberFragment"
-        android:name="com.example.calender.fragment.`MemberFragment.kt`"
+        android:name="com.example.calender.fragment.MemberFragment"
         android:label="fragment_member"
         tools:layout="@layout/fragment_member" />
     <fragment
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/dayFragment"
-        android:name="com.example.calender.fragment.`DayFragment.kt`"
+        android:name="com.example.calender.fragment.DayFragment"
         android:label="fragment_day"
         tools:layout="@layout/fragment_day" >
         <argument

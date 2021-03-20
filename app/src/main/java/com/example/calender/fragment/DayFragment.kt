@@ -1,5 +1,4 @@
 package com.example.calender.fragment
-
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,15 +8,11 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.calender.BottomDialogFragment
 import com.example.calender.R
-import kotlinx.android.synthetic.main.day_dialog.*
-import kotlinx.android.synthetic.main.day_dialog.view.*
-import kotlinx.android.synthetic.main.fragment_main.*
-import java.util.*
+
 
 class DayFragment : Fragment() {
     // TODO: Rename and change types of parameters
@@ -74,15 +69,15 @@ class DayFragment : Fragment() {
         }
 
     }
-   /* companion object {
-    //데이터 전달
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                DayFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
-    }*/
+    /* companion object {
+     //데이터 전달
+         @JvmStatic
+         fun newInstance(param1: String, param2: String) =
+                 DayFragment().apply {
+                     arguments = Bundle().apply {
+                         putString(ARG_PARAM1, param1)
+                         putString(ARG_PARAM2, param2)
+                     }
+                 }
+     }*/
 }
