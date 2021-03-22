@@ -3,6 +3,7 @@ package com.example.calender.adapter
 
 import android.app.AlertDialog
 import android.app.Application
+import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.util.Log
@@ -50,29 +51,53 @@ class CalendarAdapter(val view: View) :
                 val workDatebtn: LinearLayout = mView.findViewById(R.id.workDate_btn)
                 val workTypebtn: LinearLayout = mView.findViewById(R.id.workType_btn)
 
+                //기본 설정
+                val workdate_text : TextView= mView.findViewById(R.id.workDate_text)
+                workdate_text.text=item.year.toString()+"."+item.month.toString()+"."+item.dayOfMonth.toString()
+
+
+
+                //취소버튼 event
                 backbtn.setOnClickListener {
-                    val backdialog = AlertDialog.Builder(it.context).create()
+                    val backdialog = AlertDialog.Builder(it.context,android.R.style.Theme_Material_Light_Dialog).create()
                     val backedialog = LayoutInflater.from(it.context)
                     val backView = backedialog.inflate(R.layout.backbtn_dialog, null)
-
+                    backdialog.setCancelable(false)
                     backdialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
                     backdialog.setView(backView)
                     backdialog.create()
                     backdialog.show()
 
-                   /* val backdialog_result: Button = backdialog.findViewById(R.id.yesBtn)
-                    val backdialog_back: Button = backdialog.findViewById(R.id.noBtn)
+                    val yesbtn : Button = backView.findViewById(R.id.yesBtn)
+                    val nobtn : Button = backView.findViewById(R.id.noBtn)
 
-                    backdialog_result.setOnClickListener {
+                    yesbtn.setOnClickListener {
+                        backdialog.dismiss()
                         dialog.dismiss()
+                    }
+                    nobtn.setOnClickListener {
                         backdialog.dismiss()
                     }
-                    backdialog_back.setOnClickListener {
-                        backdialog.dismiss()
-                    }*/
+
                 }
+                //취소 버튼 이벤트 종료
+                //완료버튼 이벤트
+                resultbtn.setOnClickListener{
+
+                }
+                //완료 버튼 이벤트 종료
+
+                //근무지 버튼 이벤트
                 workplacebtn.setOnClickListener {
+
+                }
+                //근무 일자 이벤트
+                workDatebtn.setOnClickListener {
+
+                }
+                //근무 유형 버튼 이벤트
+                workTypebtn.setOnClickListener {
 
                 }
                 dialog.setView(mView)
@@ -88,6 +113,8 @@ class CalendarAdapter(val view: View) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
+
+
 
 
 }
