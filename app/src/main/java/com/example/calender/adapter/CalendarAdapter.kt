@@ -84,7 +84,8 @@ class CalendarAdapter(val view: View) :
                 //취소 버튼 이벤트 종료
                 //완료버튼 이벤트
                 resultbtn.setOnClickListener{
-
+                    //저장후
+                    dialog.dismiss()
                 }
                 //완료 버튼 이벤트 종료
 
