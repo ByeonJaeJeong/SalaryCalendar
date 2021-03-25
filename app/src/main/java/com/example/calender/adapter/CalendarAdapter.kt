@@ -75,6 +75,7 @@ class CalendarAdapter(val view: View) :
                     yesbtn.setOnClickListener {
                         backdialog.dismiss()
                         dialog.dismiss()
+                        //dialog 클릭 종료 이벤트
                     }
                     nobtn.setOnClickListener {
                         backdialog.dismiss()
