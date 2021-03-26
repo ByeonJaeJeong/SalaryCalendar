@@ -92,16 +92,16 @@ class CalendarAdapter(val view: View) :
 
                 //근무지 버튼 이벤트
                 workplacebtn.setOnClickListener {
-
+                    Toast.makeText(view.context,"근무지 클릭event",Toast.LENGTH_SHORT)
                 }
                 //
                 //근무 일자 이벤트
                 workDatebtn.setOnClickListener {
-
+                    Toast.makeText(view.context,"근무일자 클릭event",Toast.LENGTH_SHORT)
                 }
                 //근무 유형 버튼 이벤트
                 workTypebtn.setOnClickListener {
-
+                    Toast.makeText(dialog.context,"근무유형 클릭event",Toast.LENGTH_SHORT)
                 }
                 dialog.setView(mView)
                 dialog.create()
