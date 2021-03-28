@@ -11,8 +11,11 @@ import android.view.*
 import android.widget.*
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.ListAdapter
+import com.example.calender.BottomDialogFragment
 import com.example.calender.R
 import com.example.calender.ViewHolder
+import com.example.calender.activity.MainActivity
+import com.example.calender.fragment.ItemListDialogFragment
 import com.example.calender.model.CalendarInfo
 
 class CalendarAdapter(val view: View) :
@@ -42,8 +45,8 @@ class CalendarAdapter(val view: View) :
                 // navController.navigate(R.id.action_mainFragment_to_dayFragment, bundleOf("year" to item.year,"month" to  item.month,"day" to item.dayOfMonth))
                 val dialog = AlertDialog.Builder(view.context,
                     android.R.style.Theme_Material_Light_NoActionBar).create()
-                val edialog: LayoutInflater = LayoutInflater.from(view.context)
-                val mView: View = edialog.inflate(R.layout.day_dialog, null)
+                val layout: LayoutInflater = LayoutInflater.from(view.context)
+                val mView: View = layout.inflate(R.layout.day_dialog, null)
 
                 val backbtn: ImageButton = mView.findViewById(R.id.workRegistration_backBtn)
                 val resultbtn: TextView = mView.findViewById(R.id.workRegistration_resultBtn)
@@ -60,8 +63,8 @@ class CalendarAdapter(val view: View) :
                 //취소버튼 event
                 backbtn.setOnClickListener {
                     val backdialog = AlertDialog.Builder(it.context,android.R.style.Theme_Material_Light_Dialog).create()
-                    val backedialog = LayoutInflater.from(it.context)
-                    val backView = backedialog.inflate(R.layout.backbtn_dialog, null)
+                    val backlayout = LayoutInflater.from(it.context)
+                    val backView = layout.inflate(R.layout.backbtn_dialog, null)
                     backdialog.setCancelable(false)
                     backdialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
@@ -93,6 +96,7 @@ class CalendarAdapter(val view: View) :
                 //근무지 버튼 이벤트
                 workplacebtn.setOnClickListener {
                     Toast.makeText(view.context,"근무지 클릭event",Toast.LENGTH_SHORT)
+
                 }
                 //
                 //근무 일자 이벤트
@@ -102,6 +106,15 @@ class CalendarAdapter(val view: View) :
                 //근무 유형 버튼 이벤트
                 workTypebtn.setOnClickListener {
                     Toast.makeText(dialog.context,"근무유형 클릭event",Toast.LENGTH_SHORT)
+                    val moreDialog = AlertDialog.Builder(it.context,R.style.Theme_Design_BottomSheetDialog).create()
+                    val moreLayout = LayoutInflater.from(it.context,)
+                    val moreView = moreLayout.inflate(R.layout.worktype_dialog,null)
+
+
+
+                    moreDialog.setView(moreView)
+                    moreDialog.create()
+                    moreDialog.show()
                 }
                 dialog.setView(mView)
                 dialog.create()

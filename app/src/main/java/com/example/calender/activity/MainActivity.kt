@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.calender.R
 import com.example.calender.adapter.NavigationViewpagerAdapter
+import com.example.calender.fragment.ItemListDialogFragment
 import com.example.calender.fragment.MainFragment
 import com.example.calender.fragment.MoreFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,7 +30,6 @@ class MainActivity : AppCompatActivity()  {
        // navController = nav_host_fragment.findNavController()
         initViewPager()
         initNavigationBar()
-
 
     }
 
