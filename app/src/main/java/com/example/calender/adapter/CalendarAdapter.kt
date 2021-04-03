@@ -1,3 +1,4 @@
+
 package com.example.calender.adapter
 
 
@@ -22,7 +23,7 @@ class CalendarAdapter(val view: View) :
     ListAdapter<CalendarInfo, ViewHolder>(
         CalendarAdapterDiffcallback()) {
     lateinit var navController: NavController
-
++
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
 //        navController=Navigation.findNavController(context)
@@ -31,6 +32,7 @@ class CalendarAdapter(val view: View) :
         if (item.dayOfMonth == 0) {
             holder.dateNumber.visibility = View.GONE
         }
+
         //일요일
         if (item.dayOfWeek == 0) {
             holder.dateNumber.setTextColor(Color.parseColor("#B22222"))
