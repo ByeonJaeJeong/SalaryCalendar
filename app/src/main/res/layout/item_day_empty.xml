@@ -10,20 +10,13 @@
         android:layout_height="100dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline6"
+        app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/calendar_item"
         tools:ignore="MissingConstraints">
 
 
     </LinearLayout>
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1428571428571429" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

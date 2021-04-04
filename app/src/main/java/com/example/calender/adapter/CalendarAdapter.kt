@@ -59,7 +59,7 @@ class CalendarAdapter(val view: View) :
                 //기본 설정
                 val workdate_text : TextView= mView.findViewById(R.id.workDate_text)
                 workdate_text.text=item.year.toString()+"."+item.month.toString()+"."+item.dayOfMonth.toString()
-
+               //이벤트
 
 
                 //취소버튼 event
